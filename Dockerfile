@@ -49,4 +49,11 @@ COPY --from=build /myapp/build /myapp/build
 COPY --from=build /myapp/public /myapp/public
 ADD . .
 
+
+ARG DATABASE_URL=${DATABASE_URL}
+ENV DATABASE_URL=${DATABASE_URL}
+
+ARG SESSION_SECRET=${SESSION_SECRET}
+ENV SESSION_SECRET=${SESSION_SECRET}
+
 CMD ["npm", "start"]
