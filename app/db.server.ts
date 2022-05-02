@@ -25,7 +25,7 @@ function getClient() {
   invariant(typeof DATABASE_URL === "string", "DATABASE_URL env var not set");
 
 
-  console.log(`🔌 setting up prisma client to `);
+  console.log(`🔌 setting up prisma client to ${DATABASE_URL}`);
   // NOTE: during development if you change anything in this function, remember
   // that this only runs once per server restart and won't automatically be
   // re-run per request like everything else is. So if you need to change
