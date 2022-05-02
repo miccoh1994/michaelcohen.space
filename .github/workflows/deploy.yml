@@ -128,4 +128,4 @@ jobs:
           CAPROVER_APP_TOKEN: ${{ secrets.CAPROVER_APP_TOKEN }}
         run: | 
           npm i -g caprover
-          caprover deploy
+          caprover deploy --caproverUrl ${{ secrets.CAPROVER_DOMAIN }}
