@@ -170,3 +170,19 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
+  deploy: 
+    name: 🚀 Deploy
+    if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18.0.0"
+      - name: "Deploy to CapRover"
+        run: | 
+          npm i -g caprover
+          caprover deploy --appToken ${{ secrets.CAPROVER_APP_TOKEN }}
