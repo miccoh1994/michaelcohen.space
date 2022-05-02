@@ -172,7 +172,7 @@ jobs:
 
   deploy: 
     name: 🚀 Deploy
-    if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
+    if: ${{ (github.ref == 'refs/heads/main') && github.event_name == 'push' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -183,6 +183,8 @@ jobs:
         with:
           node-version: "18.0.0"
       - name: "Deploy to CapRover"
+        env:
+          CAPROVER_APP_TOKEN: ${{ secrets.CAPROVER_APP_TOKEN }}
         run: | 
           npm i -g caprover
-          caprover deploy --appToken ${{ secrets.CAPROVER_APP_TOKEN }}
+          caprover deploy
