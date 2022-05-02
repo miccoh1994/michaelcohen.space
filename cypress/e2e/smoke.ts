@@ -2,7 +2,7 @@ import faker from "@faker-js/faker";
 
 describe("smoke tests", () => {
 
-  it("should allow you to make a note", () => {
+  it("should render", () => {
     cy.visit("/");
   });
 });
